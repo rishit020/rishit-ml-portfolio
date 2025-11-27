@@ -1,0 +1,26 @@
+# NumPy Batch Generator
+
+This project is all about learning how deep learning frameworks handle data behind the scenes, but just using NumPy. I created a fake dataset with 
+10,000 samples and 20 features each. Then I:
+
+- Shuffled the dataset so the model wouldn't learn patterns from the order  
+- Split the data into mini-batches to simulate how training works  
+- Expanded and squeezed dimensions to see how deep learning models expect input shapes  
+
+The main goal was to understand **batching** and how to manipulate data shapes, which is super important before using libraries like PyTorch 
+or TensorFlow. Doing it in NumPy made me really understand slicing, indexing, and how batch indices work.
+
+### Key Skills Practiced
+- Creating arrays and using random data  
+- Shuffling and indexing with `np.random.permutation`  
+- Slicing data into batches  
+- Using `np.expand_dims` and `np.squeeze` to handle dimensions  
+- Looping through all batches and checking shapes  
+
+This project is a small but important step toward building deep learning projects, because batching and data preparation are things every model 
+needs before it can train.  
+
+### How to Run
+1. Clone this repository  
+2. Open the Python file in this folder (`batch_generator.py`)  
+3. Run the script to see each batch's shape and how expanding/squeezing dimensions changes it
