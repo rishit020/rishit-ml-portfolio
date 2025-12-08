@@ -1,0 +1,30 @@
+# Pandas ML Feature Engineering Pipeline
+
+This project demonstrates a complete feature engineering workflow using Pandas. The goal is to take a raw dataset and transform it into a clean, processed, machine-learning-ready dataset suitable for use with scikit-learn. The California Housing dataset is used as the base dataset.
+
+## What This Project Does
+
+The project walks through the full preprocessing pipeline that real-world machine learning tasks require. The steps include:
+
+- Loading the California Housing dataset from scikit-learn.
+- Introducing missing values into several columns to simulate real-world data issues.
+- Imputing missing values so that the dataset contains no null entries.
+- Normalizing all numerical features to ensure consistent scaling across columns.
+- Creating a synthetic categorical column and applying one-hot encoding to it.
+- Creating another categorical column and applying label encoding to demonstrate both encoding techniques.
+- Detecting and removing outliers using the Interquartile Range (IQR) method.
+- Separating the cleaned dataset into a feature matrix (X) and target vector (y).
+- Producing a final processed dataframe that contains all engineered features and the target variable in a format ready for machine learning.
+
+## Purpose of the Project
+
+The main goal of this project is to practice the essential preprocessing steps needed before training machine learning models. Most real datasets require cleaning, imputing, encoding, scaling, and filtering before being usable, and this project covers each of those tasks in a clear sequence. Completing this workflow provides a strong foundation for working with supervised learning models in scikit-learn.
+
+## Contents
+
+- `feature_engineering.py` — full implementation of the preprocessing workflow  
+- `README.md` — documentation describing the goals and steps of the project  
+
+## Acknowledgment
+
+The dataset used in this project is the California Housing dataset, originally published by Pace and Barry (1997) and distributed through scikit-learn.
