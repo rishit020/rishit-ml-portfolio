@@ -2,115 +2,87 @@ House Price Prediction with XGBoost
 
 This project demonstrates predicting residential house prices using the Ames Housing dataset. It implements a full supervised machine learning workflow, including data cleaning, preprocessing, model training, evaluation, and feature analysis. The notebook is built in Python using pandas, scikit-learn, and XGBoost.
 
+-----
+
 Project Overview
 
 The goal of this project is to predict house sale prices accurately by leveraging both numerical and categorical features. The workflow covers:
 
 Data Cleaning
-
-Handling missing values for categorical and numerical columns.
-
-Filling in missing basement, garage, pool, and fence information.
-
-Group-based imputation for Lot Frontage using neighborhood medians.
+- Handle missing values for categorical and numerical columns.
+- Fill in missing information for basement, garage, pool, and fence features.
+- Impute Lot Frontage using neighborhood medians.
 
 Preprocessing
-
-Scaling numerical features using StandardScaler.
-
-One-hot encoding categorical features for compatibility with tree-based models.
+- Scale numerical features with StandardScaler.
+- One-hot encode categorical features for tree-based model compatibility.
 
 Modeling
-
-XGBoost Regressor with carefully tuned hyperparameters:
-
-max_depth=3 to prevent overfitting
-
-learning_rate=0.05 for stable convergence
-
-subsample and colsample_bytree for regularization
-
-L1 (reg_alpha) and L2 (reg_lambda) regularization
-
-Model evaluation with 5-fold cross-validation.
+- XGBoost Regressor with tuned hyperparameters:
+  - max_depth=3 to prevent overfitting
+  - learning_rate=0.05 for stable convergence
+  - subsample and colsample_bytree for regularization
+  - L1 (reg_alpha) and L2 (reg_lambda) regularization
+- Model evaluation using 5-fold cross-validation.
 
 Evaluation
+- Metrics computed for training, cross-validation, and test sets:
+  - R² Score
+  - Mean Squared Error (MSE)
+  - Root Mean Squared Error (RMSE)
+  - Mean Absolute Error (MAE)
+- Visual evaluation:
+  - True vs Predicted Sale Price scatter plot
+  - Residual distribution plot
+  - Feature importance ranking (top 20 features)
 
-Performance metrics computed for training, cross-validation, and test sets:
-
-R² Score
-
-Mean Squared Error (MSE)
-
-Root Mean Squared Error (RMSE)
-
-Mean Absolute Error (MAE)
-
-Visual evaluation:
-
-True vs Predicted Sale Price scatter plot
-
-Residual distribution plot
-
-Feature importance ranking (top 20 features)
+-----
 
 Results
 
-Cross-validation R²: 0.9146
+Metric               Value
+Cross-validation R²  0.9146
+Train R²             0.9892
+Test R²              0.9226
+Test RMSE            19,478
+Test MAE             12,875
 
-Train R²: 0.9892
+These results indicate strong predictive performance with minimal overfitting, highlighting the effectiveness of preprocessing and model regularization.
 
-Test R²: 0.9226
-
-Test RMSE: 19,478
-
-Test MAE: 12,875
-
-These results indicate strong predictive performance with minimal overfitting, demonstrating the effectiveness of preprocessing and model regularization.
+-----
 
 Key Features
 
-The model leverages a combination of numerical and categorical features, including but not limited to:
+The model leverages a combination of numerical and categorical features, including:
+- Overall Quality & Condition
+- Square footage of living areas and basement
+- Year built and remodeled
+- Garage and basement information
+- Neighborhood and zoning type
 
-Overall Quality & Condition
+Feature importance analysis identifies which variables most influence house prices, providing interpretability for decision-making.
 
-Square footage of living areas and basement
-
-Year built and remodeled
-
-Garage and basement information
-
-Neighborhood and zoning type
-
-Feature importance analysis highlights which variables most influence house prices, providing interpretability for decision-making.
+-----
 
 How to Use
 
-Download the notebook HousePrice_XGBoost.ipynb from this repository.
+1. Download the notebook HousePrice_XGBoost.ipynb from this repository.
+2. Obtain the Ames Housing dataset from Kaggle: https://www.kaggle.com/c/house-prices-advanced-regression-techniques
+3. Place the dataset CSV in the same directory as the notebook or update the file path in the code.
+4. Run the notebook sequentially in Google Colab or a local Python environment with the following dependencies:
+   - pandas
+   - numpy
+   - scikit-learn
+   - xgboost
+   - matplotlib
+   - seaborn
+5. Inspect evaluation metrics and visualizations to analyze model performance.
 
-Obtain the Ames Housing dataset from Kaggle
-.
-
-Place the dataset CSV in the same directory as the notebook or update the path in the code.
-
-Run the notebook cells sequentially in Google Colab or a local Python environment with the following dependencies:
-
-pandas
-numpy
-scikit-learn
-xgboost
-matplotlib
-seaborn
-
-
-Inspect the evaluation metrics and plots to analyze model performance.
+-----
 
 Insights
 
-XGBoost is well-suited for tabular data and handles numerical and categorical features effectively.
-
-Careful handling of missing values and feature preprocessing significantly reduces overfitting.
-
-Visualizing predictions and residuals ensures model reliability and helps detect anomalies.
-
-Feature importance allows identification of key variables driving house price predictions.
+- XGBoost is highly effective for tabular data and handles mixed feature types well.
+- Careful missing value handling and feature preprocessing reduces overfitting.
+- Visualizing predictions and residuals ensures model reliability and highlights anomalies.
+- Feature importance analysis reveals the key variables driving house price predictions.
