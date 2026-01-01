@@ -1,0 +1,96 @@
+Breast Cancer Survival Prediction Project
+
+This project predicts breast cancer patient survival status (Alive or Dead) using clinical, demographic, and tumor characteristics. The notebook implements a full supervised machine learning workflow, including data cleaning, preprocessing, model training, evaluation, and feature analysis. The code is written in Python using pandas, scikit-learn, matplotlib, and seaborn.
+
+-----
+
+Project Overview
+
+The goal of this project is to predict patient survival accurately by leveraging clinical, demographic, and tumor features. The workflow covers:
+
+Data Cleaning
+- Dropped the Survival Months column to prevent target leakage.
+- Verified no missing values in the dataset.
+
+Preprocessing
+- Mapped ordinal and binary variables to numeric values.
+- One-hot encoded nominal variables: Race and Marital Status.
+- Scaled numeric features using StandardScaler (optional for tree-based models).
+
+Modeling
+- Random Forest Classifier with tuned hyperparameters:
+  - n_estimators=300
+  - max_depth=5
+  - min_samples_split=5
+  - min_samples_leaf=4
+  - max_features='sqrt'
+  - class_weight='balanced'
+- Train/test split: 80/20
+- Model evaluation using Accuracy, ROC-AUC, Precision-Recall, and feature importance.
+
+Evaluation
+- Metrics computed for test set:
+  - Accuracy
+  - ROC-AUC
+- Additional evaluations:
+  - Classification report (precision, recall, F1-score for Alive/Dead)
+  - Feature importance ranking (top predictors: Reginol Node Positive, N Stage, 6th Stage, Age, Progesterone Status)
+  - ROC Curve and Precision-Recall Curve for minority class assessment.
+
+-----
+
+Results
+
+Metric               Value
+Test Accuracy        0.865
+Test ROC-AUC         0.771
+
+The model performs well in predicting Alive patients but less accurately for Dead patients (minority class). Overall, the pipeline is reproducible and provides interpretable feature importance.
+
+-----
+
+Key Features
+
+The model leverages a combination of numeric/ordinal and one-hot encoded features, including:
+- Age, T Stage, N Stage, 6th Stage, Differentiate, Grade, Tumor Size, A Stage
+- Regional Node Examined, Reginol Node Positive, Estrogen Status, Progesterone Status
+- Race and Marital Status one-hot encodings
+
+Feature importance analysis highlights the variables most influential for survival prediction.
+
+-----
+
+How to Use
+
+1. Download the notebook `BreastCancerClassification.ipynb` from this repository.
+2. Clone the repository:
+git clone <your-repo-url>
+cd BreastCancerSurvivalPrediction
+
+markdown
+Copy code
+3. Install dependencies:
+pip install -r requirements.txt
+
+markdown
+Copy code
+4. Open the notebook in Google Colab or a local Python environment.
+5. Run all cells sequentially to reproduce preprocessing, training, and evaluation.
+
+Dependencies:
+- Python 3.8+
+- pandas
+- numpy
+- scikit-learn
+- matplotlib
+- seaborn
+- Optional: XGBoost (for testing alternative classifiers)
+
+-----
+
+Insights
+
+- Lymph node involvement, tumor stage, and age are the most influential predictors for survival.
+- The Random Forest model handles mixed feature types and provides interpretable feature importance.
+- Pipeline design ensures reproducibility and can be extended with hyperparameter tuning, alternative classifiers, or oversampling techniques for class imbalance.
+- Visualizations such as ROC and Precision-Recall curves provide insight into model performance, particularly for minority classes.
