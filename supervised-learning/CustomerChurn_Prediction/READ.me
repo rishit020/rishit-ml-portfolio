@@ -1,0 +1,138 @@
+# Customer Churn Prediction using Logistic Regression and SMOTE
+
+This project implements a complete supervised machine learning pipeline to predict customer churn using the **Telco Customer Churn dataset**. The notebook demonstrates an end-to-end workflow, covering data preprocessing, feature engineering, model training, hyperparameter tuning, evaluation, and interpretability.
+
+The primary objective is to accurately identify customers likely to churn while addressing class imbalance and maintaining strong generalization performance.
+
+---
+
+## 📌 Project Overview
+
+Customer churn prediction is a common business problem where the goal is to identify customers who are likely to discontinue a service. In this project, churn is framed as a **binary classification task** and evaluated primarily using the **F1-score**, which balances precision and recall under class imbalance.
+
+The final model is a **regularized Logistic Regression classifier** trained within a robust pipeline that includes preprocessing, **SMOTE-based oversampling**, and **cross-validated hyperparameter tuning**.
+
+---
+
+## 📂 Dataset
+
+* **Source**: Telco Customer Churn Dataset
+* **Target Variable**: `Churn`
+
+  * Yes → 1
+  * No → 0
+* **Feature Groups**:
+
+  * Demographics
+  * Account information
+  * Service usage
+  * Billing and contract details
+
+Missing values and inconsistent categorical encodings are handled automatically as part of the preprocessing pipeline.
+
+---
+
+## 🧠 Methodology
+
+### 1. Data Preprocessing
+
+* Dropped non-informative identifiers
+* Converted numeric fields with invalid entries
+* Unified categorical service indicators
+* Engineered additional features:
+
+  * Total number of subscribed services
+  * Tenure grouping
+
+### 2. Train–Test Split
+
+* Stratified split to preserve churn distribution
+* 80% training, 20% testing
+
+### 3. Pipeline Design
+
+* **Numerical features**:
+
+  * Median imputation
+  * Standard scaling
+* **Categorical features**:
+
+  * Most-frequent imputation
+  * One-hot encoding
+* **Class imbalance handling**:
+
+  * SMOTE applied *within* the training pipeline
+
+### 4. Model Training and Tuning
+
+* Logistic Regression with L1/L2 regularization
+* Hyperparameters optimized using `GridSearchCV`
+* 5-fold cross-validation
+* Optimization metric: **F1-score**
+
+---
+
+## 📈 Model Performance
+
+| Metric   | Train | Test  |
+| -------- | ----- | ----- |
+| F1-Score | ~0.63 | ~0.62 |
+
+The close alignment between training and test performance indicates minimal overfitting and stable generalization.
+
+---
+
+## 📊 Visualizations
+
+The notebook includes the following evaluation and interpretability visualizations:
+
+* Confusion Matrix heatmap
+* ROC Curve with AUC
+* Precision–Recall Curve
+* Feature coefficient importance plot
+* Threshold sensitivity analysis (optional)
+
+These plots provide insight into both predictive performance and the factors most strongly associated with customer churn.
+
+---
+
+## 🔍 Key Insights
+
+* Contract type, tenure, and service adoption are strong drivers of churn
+* Logistic Regression provides competitive performance while remaining interpretable
+* SMOTE significantly improves recall without destabilizing precision
+* Default probability thresholds are not always optimal for business objectives
+
+---
+
+## 🛠️ Technologies Used
+
+* Python
+* pandas, NumPy
+* scikit-learn
+* imbalanced-learn
+* matplotlib, seaborn
+
+---
+
+## 📁 File Structure
+
+```
+CustomerChurn_LogisticRegression_SMOTE.ipynb
+README.md
+```
+
+---
+
+## 🚀 Future Improvements
+
+* Compare performance with tree-based models such as XGBoost
+* Optimize classification threshold based on business costs
+* Incorporate SHAP or permutation importance for deeper interpretability
+* Extend evaluation to cost-sensitive metrics
+
+---
+
+## 📝 Author Notes
+
+This project was designed as a clean, reproducible supervised learning case study emphasizing correct pipeline construction, evaluation discipline, and interpretability. It is intended for educational and portfolio use.
