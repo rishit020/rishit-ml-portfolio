@@ -1,0 +1,46 @@
+# K-means Unsupervised Clustering
+
+This project demonstrates K-means clustering on both synthetic and real-world datasets. It is designed as a learning and demonstration project for unsupervised learning techniques.
+
+## Project Overview
+
+Unsupervised learning discovers patterns in data without using labels. K-means clustering partitions data into clusters by minimizing the distance of points to their cluster centers.
+
+The goals of this project are:
+
+* Generate and visualize synthetic datasets with known cluster structure
+* Apply K-means clustering and evaluate cluster quality
+* Apply K-means to the Digits dataset, which is high-dimensional and real-world
+* Explore the effect of hyperparameters like the number of clusters on clustering performance
+* Discuss limitations and insights from K-means
+
+## Datasets
+
+1. Synthetic dataset – 2D points generated with `make_blobs` containing 4 clusters.
+2. Digits dataset – 8x8 images of handwritten digits from `sklearn.datasets`.
+
+## Evaluation Metrics
+
+* Adjusted Rand Index (ARI Measures how well the clustering matches the ground truth (if available).
+* Silhouette score Measures how well-separated and cohesive clusters are (optional).
+    Inertia:   Sum of squared distances to cluster centers, which K-means tries to minimize.
+
+## How to Run
+
+1. Open the notebook `unsupervised_kmeans.ipynb` in Google Colab.
+2. Run each cell sequentially.
+3. Observe the plots and ARI scores for both synthetic and real datasets.
+4. Experiment with hyperparameters like the number of clusters or cluster spread.
+
+## Key Insights
+
+* K-means works best when clusters are roughly spherical and of similar size.
+* Synthetic datasets are useful to validate algorithm performance in a controlled setting.
+* High-dimensional real-world datasets may require preprocessing such as scaling or PCA to get meaningful clusters.
+* Choosing the right number of clusters is critical to obtaining meaningful results.
+
+## Libraries Used
+
+* NumPy
+* Matplotlib
+* Scikit-learn
